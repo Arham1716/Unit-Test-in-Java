@@ -1,0 +1,28 @@
+name: Run Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python (or other language environment, adjust as necessary)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Adjust according to your project setup
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Use the appropriate package manager if not Python
+
+      - name: Run tests
+        run: |
+          pytest  # Replace this with the test runner for your project (pytest, unittest, etc.)
